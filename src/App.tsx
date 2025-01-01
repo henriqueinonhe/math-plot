@@ -29,10 +29,10 @@ function App() {
   const minXStep = 0.1;
   const [minX, setMinX] = useState(0);
 
-  const minMaxX = 50;
-  const maxMaxX = 100;
-  const maxXStep = 0.1;
-  const [maxX, setMaxX] = useState(50);
+  const minMaxX = 0;
+  const maxMaxX = 1;
+  const maxXStep = 0.01;
+  const [maxX, setMaxX] = useState(1);
 
   const minMinY = 0;
   const maxMinY = 0;
@@ -71,7 +71,7 @@ function App() {
 
     const context = canvas.getContext("2d")!;
 
-    const resolutionFactor = 2;
+    const resolutionFactor = 5;
     const steps = resolutionFactor * Math.round(canvasWidth);
 
     // const probability = (headCount: number) => {
@@ -96,7 +96,7 @@ function App() {
       minX,
       maxX,
       steps,
-      fn: (x: number) => probability(Math.round(x)).toNumber(),
+      fn: (x: number) => probability(x).toNumber(),
     });
 
     const virtualGrid: VirtualGrid = {
